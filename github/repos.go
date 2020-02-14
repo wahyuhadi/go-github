@@ -178,12 +178,12 @@ type RepositoryListOptions struct {
 // repositories for the authenticated user.
 //
 // GitHub API docs: https://developer.github.com/v3/repos/#list-user-repositories
-func (s *RepositoriesService) List(ctx context.Context, user string, opts *RepositoryListOptions) ([]*Repository, *Response, error) {
+func (s *RepositoriesService) List(ctx context.Context, user string, perpage string, opts *RepositoryListOptions) ([]*Repository, *Response, error) {
 	var u string
 	if user != "" {
-		u = fmt.Sprintf("users/%v/repos", user)
+		u = fmt.Sprintf("users/%v/repos?per_page=%v", user, perpage)
 	} else {
-		u = "user/repos"
+		u = fmt.Sprintf("user/repos?per_page=%v", perpage)
 	}
 	u, err := addOptions(u, opts)
 	if err != nil {
