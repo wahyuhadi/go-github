@@ -1,4 +1,4 @@
-module github.com/google/go-github/v29
+module github.com/wahyuhadi/go-github
 
 require (
 	github.com/golang/protobuf v1.3.2 // indirect
